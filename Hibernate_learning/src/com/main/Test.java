@@ -47,15 +47,29 @@ public class Test {
       System.out.println(studentById.getName());
       **/
 	  
+	  
+	  
+	  // Update Data
+	  
 }
   
   public static  void  saveStudent(Student student) {
 	  Session session = HibernateUtil.getSession();
-	  Transaction beginTransaction = session.beginTransaction();
-	  session.save(student);
-	  beginTransaction.commit();
-	  HibernateUtil.closeSession();
-	  HibernateUtil.closeSessionFactory();
+	  Transaction begainTransaction = null;
+	  try {
+		  begainTransaction = session.beginTransaction();
+		  session.save(student);
+		  begainTransaction.commit();  
+	  }
+	  catch(Exception e){
+		  begainTransaction.rollback();
+	  }
+	  finally {
+		  HibernateUtil.closeSession();
+		  HibernateUtil.closeSessionFactory();
+	}
+	  
+	
 	  
   }
   
