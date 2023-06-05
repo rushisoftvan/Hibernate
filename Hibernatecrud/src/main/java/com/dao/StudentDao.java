@@ -9,7 +9,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.entity.StudentEntity;
-import com.util.HibernateUtil;
+
 import com.util.HibernateUtilNew;
 
 public class StudentDao {

@@ -12,6 +12,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CollectionId;
+import org.hibernate.annotations.NotFound;
 
 @Entity
 @Table(name="newstudent")

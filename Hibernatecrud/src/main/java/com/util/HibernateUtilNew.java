@@ -3,14 +3,17 @@ package com.util;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
-
+// this provide
 public class HibernateUtilNew {
     
 	private static SessionFactory factory = null;
 	
 	public static SessionFactory getSessionFactory() {
 		try {
-		  return	factory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+			if(factory == null) {
+				return	factory= new Configuration().configure("hibernate.cfg.xml").buildSessionFactory();
+							}
+		  
 		}
 		catch(Exception e){
 			e.printStackTrace();
