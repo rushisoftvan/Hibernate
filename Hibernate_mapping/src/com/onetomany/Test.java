@@ -1,13 +1,12 @@
-package com.onetoonemapping;
+package com.onetomany;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import org.hibernate.annotations.Comments;
 
-import com.onetomany.Blog;
-import com.onetomany.Comment;
 import com.util.HibernateUtil;
 
 public class Test {
@@ -17,26 +16,31 @@ public class Test {
 		Transaction beginTransaction = openSession.beginTransaction();
 		Blog blog = new Blog();
 		   blog.setContent("java ");
+		   
 		   Comment comment1 = new Comment();
 		   comment1.setContent("this is very good");
-		   comment1.setBlog(blog);
+		    
+		   
 		   Comment comment2 = new Comment();
 		   comment2.setContent("this is very intersting");
-		   comment2.setBlog(blog);
-		   		   
-		    openSession.save(blog);
-		    openSession.save(comment1);
-		    openSession.save(comment2);
-		    
-		   Blog blog2 = openSession.get(Blog.class, 1);
-		   List<Comment> comments = blog2.getComments();
-		   System.out.println(comments);
-		  System.out.println(blog2);
+//		   blog.addComments(comment2);
 		   
+		   List<Comment> listOfComments = new ArrayList();
+		   listOfComments.add(comment1);
+		   listOfComments.add(comment2);
 		  
+		  blog.setComments(listOfComments);
+		   
+		    openSession.persist(blog);
+		   Blog blog2 = openSession.get(Blog.class, 1); 
+		    System.out.println(blog2);
+		   // System.out.println(blog2.getComments());
+		  
+		Comment comment = openSession.get(Comment.class, 1);
+		System.out.println(comment);
 		  
 		beginTransaction.commit();
 		openSession.close();
 		HibernateUtil.closeSessionFactory();
 	}
-}
+}	

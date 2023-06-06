@@ -20,7 +20,7 @@ public class Comment {
 	private Long id;
 	private String content;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name="blog_id")
 	private Blog blog;
 
@@ -50,7 +50,11 @@ public class Comment {
 
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", content=" + content + ", blog=" + blog + "]";
+		return "Comment [id=" + id + ", content=" + content + ", blog=" + blog + ", getId()=" + getId()
+				+ ", getContent()=" + getContent() + ", getBlog()=" + getBlog() + ", getClass()=" + getClass()
+				+ ", hashCode()=" + hashCode() + ", toString()=" + super.toString() + "]";
 	}
 
+	
+  
 }

@@ -19,38 +19,26 @@ public class Blog {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String content;
-    
-    @OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy ="blog")
-    private List<Comment> comments = new ArrayList<>();
-
 	public Long getId() {
 		return id;
 	}
-
 	public void setId(Long id) {
 		this.id = id;
 	}
-
 	public String getContent() {
 		return content;
 	}
-
+	@Override
+	public String toString() {
+		return "Blog [id=" + id + ", content=" + content + ", getId()=" + getId() + ", getContent()=" + getContent()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	public void setContent(String content) {
 		this.content = content;
 	}
-
-	public List<Comment> getComments() {
-		return comments;
-	}
-
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
-	}
-
-	@Override
-	public String toString() {
-		return "Blog [id=" + id + ", content=" + content + ", comments=" + comments + "]";
-	}
+    
+   
     
          
 }
