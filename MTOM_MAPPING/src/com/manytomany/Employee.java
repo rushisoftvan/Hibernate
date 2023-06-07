@@ -19,7 +19,7 @@ public class Employee {
 	private Integer id;
 	private String name;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany
 	List<Project> projects = new ArrayList();
 
 	public Integer getId() {

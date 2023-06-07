@@ -12,6 +12,8 @@ public class Demo {
 	public static void main(String[] args) {
 		SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
 		Session openSession = sessionFactory.openSession();
+		
+	
 		Transaction beginTransaction = openSession.beginTransaction();
 		  
 		  Employee employee1= new Employee();
@@ -31,18 +33,17 @@ public class Demo {
 		    Project project2 = new Project();
 		    project2.setName("Document ManagmentSystem");
 		    
-		    List<Employee> employees  = new ArrayList<>();
-		    employees.add(employee1);
-		    employees.add(employee2);
-		    employees.add(employee3);
+		    List<Project> projects = new ArrayList();
+		    projects.add(project1);
+		    projects.add(project2);
 		    
+		      
+		     employee1.setProjects(projects);
 		    
-		    
-		    
-		    
-		    
-		    
-		
+		     openSession.persist(project1);
+		     openSession.persist(project2);
+		     openSession.persist(employee1);
+		     
 	     beginTransaction.commit();
 	     sessionFactory.close();
 	     HibernateUtil.closeSessionFactory();
