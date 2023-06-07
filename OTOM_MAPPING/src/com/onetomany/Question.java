@@ -10,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import onetomanybi.Phone;
 
 @Entity
 public class Question {
@@ -46,7 +47,9 @@ public class Question {
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	}
-
+	
+	
+	
 	@Override
 	public String toString() {
 		return "Question [id=" + id + ", content=" + content + ", answers=" + answers + "]";

@@ -31,8 +31,8 @@ public class TestDemo {
 		answers.add(answer1);
 		question.setAnswers(answers);
 		openSession.persist(question);
-		//openSession.persist(answer1);
-        //openSession.persist(answer2); 	
+		openSession.persist(answer1);
+        openSession.persist(answer2); 	
          Question question2 = openSession.get(Question.class, 1);
 		
 		System.out.println(question2);
